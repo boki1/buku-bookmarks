@@ -1,15 +1,16 @@
 #!/bin/bash
 
-BOOKMARKS_REPO=${HOME}/toolkit/buku-bookmarks/
+pushd ${BOOKMARKS_REPO}
 
-buku -e ${BOOKMARKS_REPO}/bookmarks-candidate.md
-if [ ! -z "$(diff ${BOOKMARKS_REPO}/bookmarks-candidate.md ${BOOKMARKS_REPO}/bookmarks.md)" ]; then
-	mv ${BOOKMARKS_REPO}/bookmarks-candidate.md ${BOOKMARKS_REPO}/bookmarks.md
-	git -C ${BOOKMARKS_REPO} add ${BOOKMARKS_REPO}/bookmarks.md
-	git -C ${BOOKMARKS_REPO} commit -m "bookmarks: Auto update"
-	sed -ni '/### Auto-generated list/q;p' ${BOOKMARKS_REPO}/README.md
-	echo -e "### Auto-generated list\n" >> ${BOOKMARKS_REPO}/README.md
-	cat ${BOOKMARKS_REPO}/bookmarks.md >> ${BOOKMARKS_REPO}/README.md
+buku -e bookmarks-candidate.md
+if [ ! -z "$(diff bookmarks-candidate.md bookmarks.md)" ]; then
+	mv bookmarks-candidate.md bookmarks.md
+	sed -ni '/### Auto-generated list/q;p' README.md
+	echo -e "### Auto-generated list\n" >> README.md
+	cat bookmarks.md >> README.md
+	git add bookmarks.md README.md
+	git commit -m "bookmarks: Auto update" --author="Commit Bot <commitbot>"
 fi
 
-rm -f ${BOOKMARKS_REPO}/bookmarks-candidate.md
+rm -f bookmarks-candidate.md
+popd
