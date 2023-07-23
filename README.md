@@ -11,3 +11,4 @@ I have added a crontab which monitors for modifications and commits them in time
 
 - [CS 598 JGE: Advanced Data Structures (Spring 2011)](https://jeffe.cs.illinois.edu/teaching/datastructures/2011/projects.html) <!-- TAGS: algorithms,course,cs -->
 - [The Chess Programming Wiki](https://www.chessprogramming.org/Main_Page) <!-- TAGS: chess,cs,wiki -->
+- [Dictionary of the bulgarian language](https://ibl.bas.bg/rbe/lang/bg/) <!-- TAGS: dictionary,languages -->
